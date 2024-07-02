@@ -1,0 +1,32 @@
+.coffee_container {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-rows: 50px calc(100% - 50px);
+	grid-template-columns: 100%;
+}
+
+.coffee_container_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 10px;
+
+}
+.coffee_container_header_title {
+	font: bold italic 1.3em "Fira Sans", serif;
+}
+
+.coffee_container_body {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.coffee_list {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}

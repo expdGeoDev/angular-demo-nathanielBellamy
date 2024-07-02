@@ -1,40 +1,41 @@
+import { GrindRating } from '../app/coffee/enums/grind-rating.enum';
+import { Coffee } from '../app/coffee/models/coffee.model';
+
 export const coffeeData: Coffee[] = [
-	{
-		id: 1,
-		brand: 'Kicking Horse',
-		roast: 'dark',
-		groundOrBeans: 'beans',
-	},
-	{
-		id: 2,
-		brand: 'Greenwood Lake Roasters',
-		roast: 'medium',
-		groundOrBeans: 'ground',
-	},
-	{
-		id: 3,
-		brand: 'Counter Culture',
-		roast: 'light',
-		groundOrBeans: 'beans',
-	},
-	{
-		id: 4,
-		brand: 'Starbucks',
-		roast: 'medium',
-		groundOrBeans: 'ground',
-	},
+	// TODO: fill in data
+	// {
+	// 	id: 1,
+	// 	name: 'More Like Star-sucks',
+	// 	brand: 'Dunkin',
+	// 	roast: 'Light',
+	// 	wholeBean: true,
+	// 	singleOrigin: false,
+	// 	mgCaffeinePerServing: 150,
+	// 	flavorNotes: ['nutty', 'vanilla', 'hibiscus'],
+	// 	mlServingSize: 300,
+	// },
+	// {
+	// 	id: 2,
+	// 	name: 'Dunkin on Dunkin',
+	// 	brand: 'Starbucks',
+	// 	roast: 'French',
+	// 	wholeBean: false,
+	// 	singleOrigin: true,
+	// 	grind: GrindRating.Coarse,
+	// 	mgCaffeinePerServing: 250,
+	// 	flavorNotes: ['more nutty', 'more vanilla', 'hibiscus'],
+	// 	mlServingSize: 50,
+	// },
+	// {
+	// 	id: 3,
+	// 	name: 'The Obvious Best',
+	// 	brand: 'Dutch Bros',
+	// 	roast: 'Medium',
+	// 	wholeBean: false,
+	// 	singleOrigin: true,
+	// 	grind: GrindRating.Fine,
+	// 	mgCaffeinePerServing: 250,
+	// 	flavorNotes: ['more nutty', 'more vanilla', 'hibiscus'],
+	// 	mlServingSize: 250,
+	// },
 ];
-
-type RoastType = 'light' | 'medium' | 'dark';
-type GroundOrBeans = 'ground' | 'beans';
-
-export interface Coffee {
-	id: number;
-	brand: string;
-	roast: RoastType;
-	groundOrBeans: GroundOrBeans;
-	// If you want to limit the numeric values, look here: https://stackoverflow.com/a/39495173
-	grind?: number;
-	singleOrigin?: boolean;
-	flavorNotes?: string;
-}
