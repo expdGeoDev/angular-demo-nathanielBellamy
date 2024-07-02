@@ -1,0 +1,206 @@
+<div class="coffee_form_container">
+	<form
+		class="coffee_form"
+		[formGroup]="coffeeForm"
+		(ngSubmit)="handleSubmit()">
+		<div class="coffee_form_header">
+			<div class="coffee_form_header_title">
+				New Coffee
+			</div>
+		</div>
+		<table class="coffee_form_table">
+			<thead>
+				<td></td>
+				<td></td>
+			</thead>
+			<tr class="coffee_form_table_row even_row">
+				<td class="coffee_form_table_key">
+					Name:
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="text"
+								 id="name"
+								 class="coffee_text_input"
+								 [formControl]="coffeeForm.controls.name"/>
+				</td>
+			</tr>
+			<tr class="coffee_form_table_row">
+				<td class="coffee_form_table_key">
+					Roast:
+				</td>
+				<td class="coffee_form_table_value">
+					<select id="roast"
+									class="coffee_roast_select"
+									[formControl]="coffeeForm.controls.roast">
+						<option value="White">
+							White
+						</option>
+						<option value="Light">
+							Light
+						</option>
+						<option value="Medium">
+							Medium
+						</option>
+						<option value="Dark">
+							Dark
+						</option>
+						<option value="French">
+							French
+						</option>
+						<option value="Espresso">
+							Espresso
+						</option>
+					</select>
+<!--					<input type="text"-->
+<!--								 id="roast"-->
+<!--								 class="coffee_text_input"-->
+<!--								 [formControl]="coffeeForm.controls.roast"/>-->
+				</td>
+			</tr>
+			<tr class="coffee_form_table_row even_row">
+				<td class="coffee_form_table_key">
+					Brand:
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="text"
+								 id="brand"
+								 class="coffee_text_input"
+								 [formControl]="coffeeForm.controls.brand"/>
+				</td>
+			</tr>
+			<tr class="coffee_form_table_row">
+				<td class="coffee_form_table_key">
+					Decaf:
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="checkbox"
+								 id="decaf"
+								 [formControl]="coffeeForm.controls.decaf"/>
+				</td>
+			</tr>
+			<tr
+				class="coffee_form_table_row even_row">
+				<td class="coffee_form_table_key">
+					Serving Size (ml):
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="range"
+								 min="0"
+								 max="400"
+								 [formControl]="coffeeForm.controls.mlServingSize"/>
+					<span>
+						{{coffeeForm.controls.mlServingSize.value}} mL
+					</span>
+				</td>
+			</tr>
+			<tr
+				class="coffee_form_table_row">
+				<td class="coffee_form_table_key">
+					Caffeine per Serving (mg):
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="range"
+								 min="0"
+								 max="500"
+								 [formControl]="coffeeForm.controls.mgCaffeinePerServing"/>
+					<span>
+						{{coffeeForm.controls.mgCaffeinePerServing.value}} mg
+					</span>
+				</td>
+			</tr>
+			<tr class="coffee_form_table_row even_row">
+				<td class="coffee_form_table_key">
+					WholeBean:
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="checkbox"
+								 [formControl]="coffeeForm.controls.wholeBean"/>
+				</td>
+			</tr>
+			<tr
+				*ngIf="!coffeeForm.controls.wholeBean.value"
+				class="coffee_form_table_row">
+				<td class="coffee_form_table_key">
+					Grind:
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="range"
+							   min="0"
+								 max="4"
+								 [formControl]="coffeeForm.controls.grind"/>
+					<span>
+						{{GrindRating[coffeeForm.controls.grind.value || 0]}}
+					</span>
+				</td>
+			</tr>
+			<tr
+				class="coffee_form_table_row"
+				[class.even_row]="!coffeeForm.controls.wholeBean.value">
+				<td class="coffee_form_table_key">
+					Single Origin:
+				</td>
+				<td class="coffee_form_table_value">
+					<input type="checkbox"
+								 [formControl]="coffeeForm.controls.singleOrigin"/>
+				</td>
+			</tr>
+			<tr
+				class="coffee_form_table_row"
+				[class.even_row]="coffeeForm.controls.wholeBean.value">
+				<td class="coffee_form_table_key">
+					Flavor Notes:
+				</td>
+				<td class="coffee_form_table_value">
+					<div class="coffee_form_flavor_note_chips_container">
+						<div
+							formArrayName="flavorNotes"
+							class="coffee_form_flavor_note_chips_list"
+							aria-label="Enter flavor notes"
+						>
+							@for (note of flavorNotes.value; track note; let i = $index) {
+								<span class="coffee_flavor_note_chip">
+									{{note}}
+									<button
+										type="button"
+										class="coffee_flavor_note_remove_button"
+										aria-label="'remove ' + note"
+										(keydown)="preventEnterRemove(e)"
+										(click)="removeFlavorNote(i)">
+										<p>x</p>
+									</button>
+								</span>
+							}
+						</div>
+						<div class="coffee_form_flavor_notes_input_container">
+							<input id="newFlavorNote"
+										 placeholder="New Flavor Note..."
+										 value="{{newFlavorNote}}"
+										 (input)="handleFlavorNoteInput($event)"
+										 class="coffee_form_flavor_notes_input"/>
+							<button
+								type="button"
+								(click)="addFlavorNote(newFlavorNote)">
+								<label for="newFlavorNote">
+									Add Note
+								</label>
+							</button>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="coffee_form_buttons">
+			<input type="submit"
+						 class="coffee_form_submit_button button">
+			<input type = "reset"
+						 class="coffee_form_submit_button button"
+						 [disabled]="coffeeForm.pristine && flavorNotes.pristine"
+						 (click)="handleResetClick()"/>
+			<button
+				type="button"
+				(click)="handleCancelClick()">
+				Cancel
+			</button>
+		</div>
+	</form>
+</div>

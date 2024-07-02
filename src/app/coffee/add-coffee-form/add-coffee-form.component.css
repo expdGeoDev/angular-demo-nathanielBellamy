@@ -1,0 +1,112 @@
+.coffee_form_container {
+	height: 100%;
+	width: 100%;
+	border-radius: 5px;
+	font: bold 0.9em "Fira Sans", sans-serif;
+	display: flex;
+	align-items: stretch;
+}
+
+.coffee_form {
+	flex: 1;
+	display: grid;
+	grid-template-rows: 50px calc(100% - 80px) 30px;
+	grid-template-columns: 100%
+}
+
+.coffee_form_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.coffee_form_header_title {
+	font: bold italic 1.5em "Fira Sans", sans-serif;
+}
+
+tr {
+	padding: 5px;
+}
+
+.coffee_form_table {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.coffee_form_table_key {
+	display: flex;
+	align-items: center;
+}
+.coffee_form_table_value {
+	display: flex;
+	align-itemms: center;
+	gap: 10px;
+}
+
+.even_row {
+	background-color: rgba(79, 157, 255, 0.5);
+}
+
+.coffee_form_table_row {
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 15% 85%;
+}
+
+.coffee_form_flavor_notes_input {
+	margin-left: 5px;
+}
+
+.coffee_form_flavor_notes_input_container {
+	display: flex;
+	align-items: center;
+	padding: 5px
+}
+
+
+.coffee_form_submit_button {
+}
+
+.coffee_text_input {
+}
+
+.coffee_form_flavor_note_chips_container{
+	width: 100%;
+	display: grid;
+	grid-template-rows: 90% 10%;
+	grid-template-columns: 100%;
+
+}
+
+.coffee_form_flavor_note_chips_list {
+	display: flex;
+}
+
+.coffee_flavor_note_chip {
+	height: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 0 3px 0 3px;
+	margin: 0 3px 0 3px;
+	gap: 5px;
+}
+
+.coffee_flavor_note_remove_button {
+	border-radius: 5px;
+	height: 20px;
+	width: 20px;
+	display: flex;
+	justify-content: space-around;
+	allign-items: center;
+	font: bold italic 0.7em "Fira Sans", sans-serif;
+}
+
+.coffee_form_buttons {
+	width: 100%;
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 33% 33% 33%;
+}

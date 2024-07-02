@@ -1,0 +1,20 @@
+<div class="coffee_container">
+	<div class="coffee_container_header">
+		<div class="coffee_container_header_title">
+			COFFEE BEANS
+		</div>
+		<button (click)="handleAddCoffeeClick()">
+			Add Coffee
+		</button>
+	</div>
+	<div class="coffee_container_body">
+		<app-coffee-list
+			*ngIf="!addingNewCoffee"
+			[list]="coffeeList$ | async"
+		/>
+		<app-add-coffee-form
+			*ngIf="addingNewCoffee"
+			(newCoffeeEvent)="saveCoffee($event)"
+			(cancelEvent)="cancelAddCoffee()"/>
+	</div>
+</div>

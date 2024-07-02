@@ -1,0 +1,79 @@
+<div class="coffee_list_container">
+	<div calss="coffee_list">
+		<div class="coffee_list_item coffee_list_item_header">
+			<div>
+				Id
+			</div>
+			<div>
+				Name
+			</div>
+			<div>
+				Brand
+			</div>
+			<div>
+				Decaf
+			</div>
+			<div>
+				Roast
+			</div>
+			<div>
+				Serving Size (mL)
+			</div>
+			<div>
+				Caffeine Per Serving (mg)
+			</div>
+			<div>
+				Whole Bean
+			</div>
+			<div>
+				Grind
+			</div>
+			<div>
+				Single Origin
+			</div>
+			<div>
+				Flavor Notes
+			</div>
+		</div>
+		@for(coffee of list; track coffee; let i = $index) {
+			<div
+				class="coffee_list_item"
+				[class.even_row]="i % 2 === 0"
+			>
+				<div>
+					{{coffee.id}}
+				</div>
+				<div>
+					{{coffee.name}}
+				</div>
+				<div>
+					{{coffee.brand}}
+				</div>
+				<div>
+					{{coffee.decaf}}
+				</div>
+				<div>
+					{{coffee.roast}}
+				</div>
+				<div>
+					{{coffee.mlServingSize}}
+				</div>
+				<div>
+					{{coffee.mgCaffeinePerServing}}
+				</div>
+				<div>
+					{{coffee.wholeBean}}
+				</div>
+				<div>
+					{{coffee.grind ? GrindRating[coffee.grind] : " - "}}
+				</div>
+				<div>
+					{{coffee.singleOrigin}}
+				</div>
+				<div>
+					{{coffee.flavorNotes?.join(', ')}}
+				</div>
+			</div>
+		}
+	</div>
+</div>
